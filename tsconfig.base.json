@@ -10,11 +10,27 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@broadshield/github-actions-workflow-marie-kondo": [
+        "packages/github-actions-workflow-marie-kondo/src/index.ts"
+      ],
+      "@broadshield/github-actions-core-typed-inputs": [
+        "packages/github-actions-core-typed-inputs/src/index.ts"
+      ],
+      "@broadshield/github-actions-octokit-hydrated": [
+        "packages/github-actions-octokit-hydrated/src/index.ts"
+      ],
+    }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

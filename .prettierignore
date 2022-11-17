@@ -1,4 +1,25 @@
-# Add files here to ignore them from prettier formatting
+## Ignore build output directories
+**/dist/
+**/lib/
+**/dist*/
 
-/dist
-/coverage
+## Ignore third party libraries
+**/node_modules/
+**/*.min.*
+
+## Ignore config files and directories that have generated content
+/.husky/
+/.trunk/
+/.vscode/
+/.yarn/
+/.pnp.*js
+
+## Ignore dynamic files
+CHANGELOG.md
+package-lock.json
+yarn.lock
+
+## Ignore specialist app files
+
+### Angular
+**/*inline-template-*.component.html
