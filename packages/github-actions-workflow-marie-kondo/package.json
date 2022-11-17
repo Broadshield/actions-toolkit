@@ -1,0 +1,36 @@
+{
+  "name": "@broadshield/github-actions-workflow-marie-kondo",
+  "version": "0.0.1",
+  "description": "This library supports you in only keeping Tags, Releases, and Action Workflow Runs that spark joy, and to remove the ones often created during the PR process",
+  "homepage": "https://github.com/Broadshield/actions-toolkit/tree/main/packages/github-actions-workflow-marie-kondo",
+  "type": "commonjs",
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript",
+    "TypeScript",
+    "Cleanup",
+    "Tidy",
+    "Marie Kondo",
+    "release management",
+    "tag management",
+    "GitHub Actions",
+    "GitHub Actions Workflow",
+    "GitHub Actions Workflow Run Removal"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Broadshield/actions-toolkit.git",
+    "directory": "packages/github-actions-workflow-marie-kondo"
+  },
+  "dependencies": {
+    "@broadshield/github-actions-core-typed-inputs": "*",
+    "@broadshield/github-actions-octokit-hydrated": "*",
+    "@octokit/webhooks-types": "^6.7.0",
+    "@swc/helpers": "~0.4.11",
+    "tslib": "^2.4.1"
+  }
+}

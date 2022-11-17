@@ -1,20 +1,25 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "lib - Node 16 + Strictest",
+  "extends": "./node_modules/@tsconfig/node16-strictest/tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
+    "strictNullChecks": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "types": ["node", "jest"],
+    "paths": {
+      "@broadshield/github-actions-core-typed-inputs": ["packages/github-actions-core-typed-inputs/src/index.ts"],
+      "@broadshield/github-actions-octokit-hydrated": ["packages/github-actions-octokit-hydrated/src/index.ts"],
+      "@broadshield/github-actions-workflow-marie-kondo": ["packages/github-actions-workflow-marie-kondo/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

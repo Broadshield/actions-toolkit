@@ -1,0 +1,54 @@
+{
+  "name": "github-actions-workflow-marie-kondo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/github-actions-workflow-marie-kondo/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:swc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/github-actions-workflow-marie-kondo",
+        "main": "packages/github-actions-workflow-marie-kondo/src/index.ts",
+        "tsConfig": "packages/github-actions-workflow-marie-kondo/tsconfig.lib.json",
+        "assets": [
+          "packages/github-actions-workflow-marie-kondo/*.md"
+        ]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs github-actions-workflow-marie-kondo {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "packages/github-actions-workflow-marie-kondo/**/*.ts"
+        ],
+        "ignorePath": "./.eslintignore"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "packages/github-actions-workflow-marie-kondo/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,57 @@
+{
+  "extends": [
+    "../../.eslintrc.json"
+  ],
+  "ignorePatterns": [
+    "!**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
+      "parserOptions": {
+        "project": [
+          "packages/github-actions-workflow-marie-kondo/tsconfig.*?.json"
+        ]
+      },
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "parserOptions": {
+        "project": [
+          "packages/github-actions-workflow-marie-kondo/tsconfig.*?.json"
+        ]
+      },
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.spec.ts",
+        "*.spec.tsx",
+        "*.spec.js",
+        "*.spec.jsx"
+      ],
+      "parserOptions": {
+        "project": [
+          "packages/github-actions-workflow-marie-kondo/tsconfig.*?.json"
+        ]
+      },
+      "rules": {}
+    }
+  ]
+}

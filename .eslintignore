@@ -1,0 +1,9 @@
+/dist/
+./lib/
+!./src/lib
+**/node_modules/**
+/.trunk
+/.yarn
+/.husky
+/.vscode
+../**/packages/**
