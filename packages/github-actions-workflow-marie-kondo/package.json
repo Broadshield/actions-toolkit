@@ -29,8 +29,6 @@
   "dependencies": {
     "@broadshield/github-actions-core-typed-inputs": "*",
     "@broadshield/github-actions-octokit-hydrated": "*",
-    "@octokit/webhooks-types": "^6.7.0",
-    "@swc/helpers": "~0.4.11",
     "tslib": "^2.4.1"
   }
 }
