@@ -59,7 +59,6 @@ jobs:
           node-version: 16
           cache: yarn
 
-
       - name: Install dependencies
         run: yarn install --prefer-offline --frozen-lockfile --non-interactive --cache-folder ~/.cache/yarn
 

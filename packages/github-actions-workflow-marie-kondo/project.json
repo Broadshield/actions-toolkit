@@ -26,9 +26,7 @@
         "bundle": true,
         "target": "node16",
         "metafile": true,
-        "esbuildOptions": {
-
-        }
+        "esbuildOptions": {}
       },
       "configurations": {
         "development": {
