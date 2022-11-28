@@ -12,7 +12,6 @@ export { validate } from '@octokit/graphql-schema';
 export type { PaginateInterface, PaginatingEndpoints } from '@octokit/plugin-paginate-rest';
 export { composePaginateRest, isPaginatingEndpoint } from '@octokit/plugin-paginate-rest';
 export { restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods';
-export * from '@octokit/webhooks-types';
 
 // MAX_RETRIES is an arbitrary number, but consider that it limits the number
 // of retries for the entire client instance, not for a single request.

@@ -9,6 +9,14 @@ logs
 **/node_modules
 **/junit.xml
 /**/.yarn/cache/**/*
+.yarn/cache/**/*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 # compiled output
 dist
 tmp

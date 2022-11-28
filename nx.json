@@ -2,11 +2,11 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "@broadshield",
   "affected": {
-    "defaultBase": "dev"
+    "defaultBase": "main"
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "NGI5ZDc2OTMtNmRjMC00ZjUxLWFjZjQtMGNmNTc0OTEzZWM1fHJlYWQtd3JpdGU="
@@ -14,6 +14,9 @@
     }
   },
   "targetDefaults": {
+    "install": {
+      "inputs": ["default", "^production", "{workspaceRoot}/package.json"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
@@ -45,5 +48,10 @@
   },
   "cli": {
     "packageManager": "yarn"
+  },
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": true
+    }
   }
 }
