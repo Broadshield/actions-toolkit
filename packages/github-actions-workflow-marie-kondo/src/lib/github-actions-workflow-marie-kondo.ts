@@ -188,9 +188,7 @@ export class Kondo {
 
           const itemReturnKey: ReturnListType<T> = item[rKey] as ReturnListType<T>;
 
-          if (!filter) {
-            filtered_return_keys.push(itemReturnKey);
-          } else {
+          if (filter) {
             const filterKeys = Object.keys(filter) as (keyof typeof filter)[];
 
             for (const filterKey of filterKeys) {
@@ -215,6 +213,8 @@ export class Kondo {
                 logger.warn(`Unknown filter key: ${String(filterKey)} as ${typeof filterKey}`);
               }
             }
+          } else {
+            filtered_return_keys.push(itemReturnKey);
           }
         }
         }
