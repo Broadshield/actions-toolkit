@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.0](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-workflow-marie-kondo-1.0.0...github-actions-workflow-marie-kondo-1.1.0) (2022-11-29)
+
 ## [1.0.0](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-workflow-marie-kondo-0.1.1...github-actions-workflow-marie-kondo-1.0.0) (2022-11-29)
 
 ## [0.1.1](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-workflow-marie-kondo-0.1.0...github-actions-workflow-marie-kondo-0.1.1) (2022-11-29)
