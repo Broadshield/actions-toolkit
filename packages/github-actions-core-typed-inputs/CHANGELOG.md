@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.1](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-core-typed-inputs-0.1.0...github-actions-core-typed-inputs-0.1.1) (2022-11-29)
+
+
+### Bug Fixes
+
+* **bundle:** bundle missing extra dependency ([7795b12](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/7795b126e7917706da6202e32baf319b7b52fc26))
+
 ## 0.1.0 (2022-11-29)
 
 
