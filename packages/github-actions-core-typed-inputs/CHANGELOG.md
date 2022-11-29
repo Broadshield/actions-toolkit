@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.0](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-core-typed-inputs-1.0.0...github-actions-core-typed-inputs-1.1.0) (2022-11-29)
+
 ## [1.0.0](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-core-typed-inputs-0.1.1...github-actions-core-typed-inputs-1.0.0) (2022-11-29)
 
 ## [0.1.1](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-core-typed-inputs-0.1.0...github-actions-core-typed-inputs-0.1.1) (2022-11-29)
