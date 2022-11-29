@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "github-actions-core-typed-inputs": "packages/github-actions-core-typed-inputs",
+    "github-actions-workflow-marie-kondo": "packages/github-actions-workflow-marie-kondo",
+    "github-actions-octokit-hydrated": "packages/github-actions-octokit-hydrated"
+  }
+}

@@ -1,12 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "lib - Node 16 + Strictest",
-  "extends": "./node_modules/@tsconfig/node16-strictest/tsconfig.json",
+  "extends": "@tsconfig/node16-strictest/tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -15,7 +16,6 @@
     "skipDefaultLibCheck": true,
     "module": "esnext",
     "baseUrl": ".",
-    "types": ["node", "jest"],
     "paths": {
       "@broadshield/github-actions-core-typed-inputs": ["packages/github-actions-core-typed-inputs/src/index.ts"],
       "@broadshield/github-actions-octokit-hydrated": ["packages/github-actions-octokit-hydrated/src/index.ts"],

@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "@broadshield",
+  "npmScope": "broadshield",
   "affected": {
     "defaultBase": "main"
   },
@@ -14,9 +14,6 @@
     }
   },
   "targetDefaults": {
-    "install": {
-      "inputs": ["default", "^production", "{workspaceRoot}/package.json"]
-    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
@@ -40,18 +37,10 @@
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
   },
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"
-  },
-  "cli": {
-    "packageManager": "yarn"
-  },
-  "pluginsConfig": {
-    "@nrwl/js": {
-      "analyzeSourceFiles": true
-    }
   }
 }

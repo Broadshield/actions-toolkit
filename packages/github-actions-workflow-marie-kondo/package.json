@@ -12,10 +12,5 @@
     "type": "git",
     "url": "git+https://github.com/Broadshield/actions-toolkit.git",
     "directory": "packages/github-actions-workflow-marie-kondo"
-  },
-  "dependencies": {
-    "@broadshield/github-actions-core-typed-inputs": "*",
-    "@broadshield/github-actions-octokit-hydrated": "*",
-    "tslib": "^2.4.1"
   }
 }

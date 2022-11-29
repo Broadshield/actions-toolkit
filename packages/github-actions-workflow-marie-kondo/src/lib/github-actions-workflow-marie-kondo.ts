@@ -102,7 +102,7 @@ function itemFilterToString<R extends keyof UsablePaginatingEndpoints>(filter?: 
     const keys = Object.keys(filter) as (keyof typeof filter)[];
     const outputStringArray: string[] = [];
     for (const key of keys) {
-      if (isKeyOfResponseData(key, filter)) {
+      if (isKeyOfResponseData(key, filter) && typeof key !== 'symbol') {
         const value = filter[key];
         let valueString = '';
         if (value instanceof RegExp) {
@@ -192,7 +192,7 @@ export class Kondo {
             const filterKeys = Object.keys(filter) as (keyof typeof filter)[];
 
             for (const filterKey of filterKeys) {
-              if (filterKey && isKeyOfResponseData(filterKey, item)) {
+              if (filterKey && isKeyOfResponseData(filterKey, item) && typeof filterKey !== 'symbol') {
                 const filterValue = filter[filterKey];
                 if (filterValue instanceof RegExp) {
                   if (filterValue.test(item[filterKey])) {
