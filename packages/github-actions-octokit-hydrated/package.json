@@ -4,14 +4,7 @@
   "description": "This adds a hydrated octokit with pagination, retries, and rate throttling",
   "homepage": "https://github.com/Broadshield/actions-toolkit/tree/main/packages/github-actions-octokit-hydrated",
   "type": "commonjs",
-  "keywords": [
-    "GitHub",
-    "Actions",
-    "JavaScript",
-    "TypeScript",
-    "Inputs",
-    "GitHub Actions"
-  ],
+  "keywords": ["GitHub", "Actions", "JavaScript", "TypeScript", "Inputs", "GitHub Actions"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Broadshield/actions-toolkit.git",

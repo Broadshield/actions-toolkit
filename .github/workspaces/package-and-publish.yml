@@ -60,7 +60,7 @@ jobs:
           cache: yarn
 
       - name: Install dependencies
-        run: yarn install --prefer-offline --frozen-lockfile --non-interactive --cache-folder ~/.cache/yarn
+        run: yarn install --prefer-offline --frozen-lockfile --non-interactive
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
@@ -78,9 +78,12 @@ jobs:
           NPM_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           npx nx affected --target=publish --all
-      - run: npm install
-      - run: npm run build
-      - run: npm run semantic-release
+
+      - uses: release-lab/setup-whatchanged@v1
+        with:
+          version: v0.5.7
+      - run: |
+          whatchanged
       - name: Prepare docs for publication
         run: |
           mkdir -p publish
