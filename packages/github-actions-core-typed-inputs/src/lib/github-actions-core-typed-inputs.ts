@@ -48,12 +48,13 @@ const baseUrl = GitHubUtils.getApiBaseUrl();
 export const OctokitDefaultOptions: typeof githubOctokitDefaults = {
   baseUrl,
   request: {
-      agent: GitHubUtils.getProxyAgent(baseUrl)
-  }
+    agent: GitHubUtils.getProxyAgent(baseUrl),
+  },
 };
 export const logger = {
   debug: core.debug,
   info: core.info,
+  notice: core.notice,
   warn: core.warning,
   warning: core.warning,
   error: core.error,
@@ -241,8 +242,15 @@ export type GithubOctokitRepo = {
   owner: string;
   repo: string;
 };
-export type GithubOctokitRepoType<T> = T extends GithubOctokitRepo ? GithubOctokitRepo : T extends undefined ? void : never;
-export function repoSplit<T extends GithubOctokitRepo>(inputRepo?: string, yourContext?: Context): GithubOctokitRepoType<T> {
+export type GithubOctokitRepoType<T> = T extends GithubOctokitRepo
+  ? GithubOctokitRepo
+  : T extends undefined
+  ? void
+  : never;
+export function repoSplit<T extends GithubOctokitRepo>(
+  inputRepo?: string,
+  yourContext?: Context,
+): GithubOctokitRepoType<T> {
   const ctx = yourContext ?? context;
   if (inputRepo) {
     const [owner, repo] = inputRepo.split('/');
