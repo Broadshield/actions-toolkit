@@ -55,7 +55,10 @@
         },
         "import/resolver": {
           "typescript": {
-            "project": ["packages/*/tsconfig.json", "tools/tsconfig.tools.json"],
+            "project": [
+              "packages/*/tsconfig.json",
+              "tools/tsconfig.tools.json"
+            ],
             "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn"t contain any source code, like `@types/unist`
           }
         }
@@ -92,8 +95,10 @@
         "plugin:@nrwl/nx/typescript"
       ],
       "parserOptions": {
-        "project":
-          ["packages/*/tsconfig.json", "tools/tsconfig.tools.json"]
+        "project": [
+          "packages/*/tsconfig.json",
+          "tools/tsconfig.tools.json"
+        ]
       },
       "settings": {
         "import/parsers": {
@@ -184,7 +189,6 @@
           "error",
           "always"
         ],
-
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/type-annotation-spacing": "error",
         "@typescript-eslint/unbound-method": "error",
@@ -210,7 +214,7 @@
         "no-restricted-syntax": "off",
         "one-var": "off",
         "semi": "off",
-        "simple-import-sort/exports": "error",
+        "simple-import-sort/exports": "off",
         "simple-import-sort/imports": "error",
         "sort-imports": "off",
         "sonarjs/cognitive-complexity": "off",
@@ -230,7 +234,8 @@
         "@typescript-eslint/no-misused-new": "error",
         "@typescript-eslint/no-namespace": "error",
         "@typescript-eslint/no-non-null-assertion": "warn",
-        "@typescript-eslint/no-unsafe-argument": "off"
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "import/no-extraneous-dependencies": "off"
       },
       "globals": {
         "NodeJS": true
@@ -274,7 +279,7 @@
         },
         "import/resolver": {
           "typescript": {
-            "project": "packages/*/tsconfig.json",
+            "project": "packages/*/tsconfig.spec.json",
             "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn"t contain any source code, like `@types/unist`
           }
         }
@@ -298,6 +303,7 @@
         "import/no-extraneous-dependencies": "off",
         "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/no-unsafe-return": "off",
+        "simple-import-sort/exports": "off",
         "@typescript-eslint/no-unused-vars": [
           "error",
           {

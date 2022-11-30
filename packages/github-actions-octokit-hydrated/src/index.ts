@@ -1,1 +1,1 @@
-export * from './lib/github-actions-octokit-hydrated';
+export * from './lib';

@@ -1,29 +1,20 @@
 {
   "name": "@broadshield/github-actions-core-typed-inputs",
-  "version": "0.0.1",
+  "version": "1.2.2",
   "description": "This adds `getStringInput`, `getBooleanInput`, and `getNumberInput` with default handling to @actions/core",
   "homepage": "https://github.com/Broadshield/actions-toolkit/tree/main/packages/github-actions-core-typed-inputs",
   "type": "commonjs",
-  "keywords": ["GitHub", "Actions", "JavaScript", "TypeScript", "Inputs", "GitHub Actions"],
-  "publishConfig": {
-    "access": "public"
-  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript",
+    "TypeScript",
+    "Inputs",
+    "GitHub Actions"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Broadshield/actions-toolkit.git",
     "directory": "packages/github-actions-core-typed-inputs"
-  },
-  "dependencies": {
-    "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1",
-    "@octokit/auth-token": "^3.0.2",
-    "@octokit/request": "^6.2.2",
-    "@octokit/types": "^8.0.0",
-    "tslib": "^2.4.1"
-  },
-  "dependenciesMeta": {
-    "@actions/core": {
-      "injected": true
-    }
   }
 }

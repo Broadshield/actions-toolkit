@@ -1,5 +1,4 @@
-import type { GithubOctokitRepo } from '@broadshield/github-actions-core-typed-inputs';
-import { logger } from '@broadshield/github-actions-core-typed-inputs';
+import { GithubOctokitRepo, isDebug, logger } from '@broadshield/github-actions-core-typed-inputs';
 import {
   createOctokit,
   KnownKeysMatching,
@@ -37,10 +36,9 @@ type UsableEndpointResponseDataType<T extends keyof UsablePaginatingEndpoints> =
 >;
 
 type ReturnListType<T extends keyof UsablePaginatingEndpoints> = T extends tagsRouteType ? string : number;
-type FilterableParameters<T extends keyof UsablePaginatingEndpoints> = T extends UsableEndpointResponseDataType<T> ? KnownKeysMatching<
-  UsableEndpointResponseDataType<T>,
-  string | number
-  > : never;
+type FilterableParameters<T extends keyof UsablePaginatingEndpoints> = T extends UsableEndpointResponseDataType<T>
+  ? KnownKeysMatching<UsableEndpointResponseDataType<T>, string | number>
+  : never;
 type FilterableParameterValueTypes = RegExp | Date | number | string;
 type FilterInterface<R extends keyof UsablePaginatingEndpoints> = {
   [key in keyof FilterableParameters<R>]: FilterableParameterValueTypes;
@@ -83,8 +81,9 @@ function isKeyOfResponseData<T extends keyof UsablePaginatingEndpoints>(
   return (
     typeof arg === 'string' &&
     Object.keys(responseData).includes(arg) &&
-    typeof (responseData as UsableEndpointResponseDataType<T>)[arg as keyof UsableEndpointResponseDataType<T>] in
-      ['string', 'number']
+    ['string', 'number'].includes(
+      typeof (responseData as UsableEndpointResponseDataType<T>)[arg as keyof UsableEndpointResponseDataType<T>],
+    )
   );
 }
 
@@ -97,12 +96,17 @@ function parametersToString<R extends keyof UsablePaginatingEndpoints>(
     .join('&');
 }
 
-function itemFilterToString<R extends keyof UsablePaginatingEndpoints>(filter?: FilterInterface<R>): string {
+function itemFilterToString<R extends keyof UsablePaginatingEndpoints>(
+  filter?: FilterInterface<R>,
+  responseData?: UsableEndpointResponseDataType<R>,
+): string {
   if (filter) {
-    const keys = Object.keys(filter) as (keyof typeof filter)[];
+    let key: keyof typeof filter;
     const outputStringArray: string[] = [];
-    for (const key of keys) {
-      if (isKeyOfResponseData(key, filter)) {
+    for (key in filter) {
+      if (Object.prototype.hasOwnProperty.call(filter, key)) {
+        const verifiedKey = isKeyOfResponseData<R>(key, responseData ?? {}) ? key : '';
+
         const value = filter[key];
         let valueString = '';
         if (value instanceof RegExp) {
@@ -115,7 +119,11 @@ function itemFilterToString<R extends keyof UsablePaginatingEndpoints>(filter?: 
           valueString = Number(value).toString(10);
         }
         if (valueString) {
-          outputStringArray.push(`[${String(key)}: ${valueString}]`);
+          if (typeof verifiedKey === 'string' && verifiedKey.length > 0) {
+            outputStringArray.push(`[(V) ${String(key)}: ${valueString}]`);
+          } else {
+            outputStringArray.push(`[${String(key)}: ${valueString}]`);
+          }
         }
       }
     }
@@ -160,7 +168,6 @@ export class Kondo {
     return this.octokit;
   }
 
-
   async getMatchingItemsFromEndpointRest<T extends keyof UsablePaginatingEndpoints>(
     endpoint: T,
     parameters?: UsablePaginatingEndpointType<T>['parameters'],
@@ -174,53 +181,63 @@ export class Kondo {
         parameters,
       )}, filter: ${itemFilterToString(filter)}`,
     );
+    if (!filter) {
+      throw new Error('A filter is required');
+    }
     for await (const response of octokit.paginate.iterator(endpoint, parameters)) {
-      // ResponseType<T>["data"]
       if (response?.data && Array.isArray(response.data)) {
+        const entries = response.data;
+        type Entry = typeof entries[number];
+        type EntryKey = keyof Entry;
+        let item: Entry;
 
+        for (item of entries) {
+          logger.debug(`getMatchingItemsFromEndpointRest: item: ${JSON.stringify(item, undefined, 2)}`);
 
-        const items = response.data;
+          const rKey = availableRoutes[endpoint].returnKey as EntryKey extends string ? EntryKey : never;
+          const itemReturnValue: ReturnListType<T> = item[rKey];
 
-        for (const item of items) {
-          type Item = typeof item;
-          const rKey = availableRoutes[endpoint].returnKey as keyof Item;
-          if (item[rKey] !== undefined) {
+          logger.debug(`getMatchingItemsFromEndpointRest: item return key: ${rKey}, value: ${itemReturnValue}`);
 
-          const itemReturnKey: ReturnListType<T> = item[rKey] as ReturnListType<T>;
-
-          if (filter) {
-            const filterKeys = Object.keys(filter) as (keyof typeof filter)[];
-
-            for (const filterKey of filterKeys) {
-              if (filterKey && isKeyOfResponseData(filterKey, item)) {
+          if (itemReturnValue && filter) {
+            let filterKey: keyof typeof filter;
+            for (filterKey in filter) {
+              if (Object.prototype.hasOwnProperty.call(filter, filterKey) && isKeyOfResponseData(filterKey, item)) {
                 const filterValue = filter[filterKey];
+                const itemValue = item[filterKey];
+                let addToList = false;
                 if (filterValue instanceof RegExp) {
-                  if (filterValue.test(item[filterKey])) {
-                    filtered_return_keys.push(itemReturnKey);
+                  if (filterValue.test(itemValue)) {
+                    addToList = true;
                   }
                 } else if (filterValue instanceof Date) {
-                  if (filterValue.getTime() === new Date(item[filterKey]).getTime()) {
-                    filtered_return_keys.push(itemReturnKey);
+                  if (filterValue.getTime() === new Date(itemValue).getTime()) {
+                    addToList = true;
                   }
                 } else if (typeof filterValue === 'string' || typeof filterValue === 'number') {
-                  if (filterValue === item[filterKey]) {
-                    filtered_return_keys.push(itemReturnKey);
+                  if (filterValue === itemValue) {
+                    addToList = true;
                   }
                 } else {
                   logger.warn(`Unknown filter value type: ${filterValue} as ${typeof filterValue}`);
+                }
+                if (addToList) {
+                  filtered_return_keys.push(itemReturnValue);
+                  if (isDebug()) {
+                    logger.debug(`${itemReturnValue} matches filter: ${itemFilterToString(filter, item)}`);
+                  }
                 }
               } else {
                 logger.warn(`Unknown filter key: ${String(filterKey)} as ${typeof filterKey}`);
               }
             }
-          } else {
-            filtered_return_keys.push(itemReturnKey);
           }
-        }
         }
       }
     }
-    logger.info(`Found ${filtered_return_keys.length} ids matching filter: ${itemFilterToString(filter)}`);
+    logger.debug(
+      `Endpoint ${endpoint}, Total matches: ${filtered_return_keys.length}, Filter: ${itemFilterToString(filter)}`,
+    );
     return filtered_return_keys;
   }
 

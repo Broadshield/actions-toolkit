@@ -1,6 +1,5 @@
 ## Ignore build output directories
 **/dist/
-**/lib/
 **/dist*/
 
 ## Ignore third party libraries
