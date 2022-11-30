@@ -150,7 +150,6 @@
         "@typescript-eslint/restrict-plus-operands": "error",
         "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/semi": ["error", "always"],
-
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/type-annotation-spacing": "error",
         "@typescript-eslint/unbound-method": "error",
@@ -176,7 +175,7 @@
         "no-restricted-syntax": "off",
         "one-var": "off",
         "semi": "off",
-        "simple-import-sort/exports": "error",
+        "simple-import-sort/exports": "off",
         "simple-import-sort/imports": "error",
         "sort-imports": "off",
         "sonarjs/cognitive-complexity": "off",
@@ -251,6 +250,7 @@
         "import/no-extraneous-dependencies": "off",
         "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/no-unsafe-return": "off",
+        "simple-import-sort/exports": "off",
         "@typescript-eslint/no-unused-vars": [
           "error",
           {
