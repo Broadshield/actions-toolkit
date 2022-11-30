@@ -43,10 +43,7 @@
         },
         "import/resolver": {
           "typescript": {
-            "project": [
-              "packages/*/tsconfig.json",
-              "tools/tsconfig.tools.json"
-            ],
+            "project": ["packages/*/tsconfig.json", "tools/tsconfig.tools.json"],
             "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn"t contain any source code, like `@types/unist`
           }
         }
@@ -76,10 +73,7 @@
         "plugin:@nrwl/nx/typescript"
       ],
       "parserOptions": {
-        "project": [
-          "packages/*/tsconfig.json",
-          "tools/tsconfig.tools.json"
-        ]
+        "project": ["packages/*/tsconfig.json", "tools/tsconfig.tools.json"]
       },
       "settings": {
         "import/parsers": {
@@ -155,10 +149,7 @@
         "@typescript-eslint/require-array-sort-compare": "error",
         "@typescript-eslint/restrict-plus-operands": "error",
         "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/semi": [
-          "error",
-          "always"
-        ],
+        "@typescript-eslint/semi": ["error", "always"],
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/type-annotation-spacing": "error",
         "@typescript-eslint/unbound-method": "error",
