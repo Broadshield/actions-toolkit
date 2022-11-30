@@ -63,7 +63,7 @@
     "@jscutlery/semver": "latest",
     "@nrwl/cli": "15.2.3",
     "@nrwl/devkit": "15.2.3",
-    "@nrwl/esbuild": "^15.2.3",
+    "@nrwl/esbuild": "^15.2.4",
     "@nrwl/eslint-plugin-nx": "15.2.3",
     "@nrwl/jest": "15.2.3",
     "@nrwl/js": "15.2.3",
