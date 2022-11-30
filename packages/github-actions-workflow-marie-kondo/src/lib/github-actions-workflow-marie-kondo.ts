@@ -1,5 +1,4 @@
-import type { GithubOctokitRepo } from '@broadshield/github-actions-core-typed-inputs';
-import { logger } from '@broadshield/github-actions-core-typed-inputs';
+import { GithubOctokitRepo, isDebug, logger } from '@broadshield/github-actions-core-typed-inputs';
 import {
   createOctokit,
   KnownKeysMatching,
@@ -203,7 +202,7 @@ export class Kondo {
           if (itemReturnValue && filter) {
             let filterKey: keyof typeof filter;
             for (filterKey in filter) {
-              if (filterKey && isKeyOfResponseData(filterKey, item)) {
+              if (Object.prototype.hasOwnProperty.call(filter, filterKey) && isKeyOfResponseData(filterKey, item)) {
                 const filterValue = filter[filterKey];
                 const itemValue = item[filterKey];
                 let addToList = false;
@@ -224,7 +223,9 @@ export class Kondo {
                 }
                 if (addToList) {
                   filtered_return_keys.push(itemReturnValue);
-                  logger.info(`Found item matching filter: ${itemFilterToString(filter, item)}`);
+                  if (isDebug()) {
+                    logger.debug(`${itemReturnValue} matches filter: ${itemFilterToString(filter, item)}`);
+                  }
                 }
               } else {
                 logger.warn(`Unknown filter key: ${String(filterKey)} as ${typeof filterKey}`);
@@ -234,7 +235,9 @@ export class Kondo {
         }
       }
     }
-    logger.info(`Found ${filtered_return_keys.length} ids matching filter: ${itemFilterToString(filter)}`);
+    logger.debug(
+      `Endpoint ${endpoint}, Total matches: ${filtered_return_keys.length}, Filter: ${itemFilterToString(filter)}`,
+    );
     return filtered_return_keys;
   }
 
