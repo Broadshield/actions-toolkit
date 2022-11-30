@@ -156,6 +156,7 @@ describe('github.ts', () => {
     });
 
     it('should return a string with a token from the input', () => {
+      expect(process.env['GITHUB_TOKEN']).toBeDefined();
       process.env['INPUT_TOKEN'] = process.env['GITHUB_TOKEN'] || '';
       const result = myGithub.getGithubToken('token');
       expect(typeof result).toBe('string');
@@ -163,6 +164,7 @@ describe('github.ts', () => {
       delete process.env['INPUT_TOKEN'];
     });
     it('should return a string from the default input `github_token`', () => {
+      expect(process.env['GITHUB_TOKEN']).toBeDefined();
       process.env['INPUT_GITHUB_TOKEN'] = process.env['GITHUB_TOKEN'] || '';
       const result = myGithub.getGithubToken('token');
       expect(typeof result).toBe('string');
@@ -170,6 +172,7 @@ describe('github.ts', () => {
       delete process.env['INPUT_GITHUB_TOKEN'];
     });
     it('should return a string from the environment variable `GITHUB_TOKEN`', () => {
+      expect(process.env['GITHUB_TOKEN']).toBeDefined();
       const result = myGithub.getGithubToken();
       expect(typeof result).toBe('string');
       expect(result).toBe(process.env['GITHUB_TOKEN']);

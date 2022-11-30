@@ -83,8 +83,7 @@ function isKeyOfResponseData<T extends keyof UsablePaginatingEndpoints>(
   return (
     typeof arg === 'string' &&
     Object.keys(responseData).includes(arg) &&
-    typeof (responseData as UsableEndpointResponseDataType<T>)[arg as keyof UsableEndpointResponseDataType<T>] in
-      ['string', 'number']
+      ['string', 'number'].includes(typeof (responseData as UsableEndpointResponseDataType<T>)[arg as keyof UsableEndpointResponseDataType<T>])
   );
 }
 
@@ -179,32 +178,35 @@ export class Kondo {
       if (response?.data && Array.isArray(response.data)) {
 
 
-        const items = response.data;
+        const entries = response.data;
+        type Entry = typeof entries[number];
+        type EntryKey = keyof Entry;
+        let item: Entry;
 
-        for (const item of items) {
-          type Item = typeof item;
-          const rKey = availableRoutes[endpoint].returnKey as keyof Item;
-          if (item[rKey] !== undefined) {
+        for (item of entries) {
+          logger.debug(`getMatchingItemsFromEndpointRest: item: ${JSON.stringify(item, undefined, 2)}`);
 
-          const itemReturnKey: ReturnListType<T> = item[rKey] as ReturnListType<T>;
+          const rKey = availableRoutes[endpoint].returnKey as EntryKey extends string ? EntryKey : never;
+          const itemReturnValue: ReturnListType<T> = item[rKey];
 
-          if (filter) {
-            const filterKeys = Object.keys(filter) as (keyof typeof filter)[];
+            logger.debug(`getMatchingItemsFromEndpointRest: item return key: ${rKey}, value: ${itemReturnValue}`);
 
-            for (const filterKey of filterKeys) {
-              if (filterKey && isKeyOfResponseData(filterKey, item) && typeof filterKey !== 'symbol') {
+            if (itemReturnValue && filter) {
+            let filterKey: keyof typeof filter;
+            for (filterKey in filter) {
+              if (filterKey && isKeyOfResponseData(filterKey, item)) {
                 const filterValue = filter[filterKey];
                 if (filterValue instanceof RegExp) {
                   if (filterValue.test(item[filterKey])) {
-                    filtered_return_keys.push(itemReturnKey);
+                    filtered_return_keys.push(itemReturnValue);
                   }
                 } else if (filterValue instanceof Date) {
                   if (filterValue.getTime() === new Date(item[filterKey]).getTime()) {
-                    filtered_return_keys.push(itemReturnKey);
+                    filtered_return_keys.push(itemReturnValue);
                   }
                 } else if (typeof filterValue === 'string' || typeof filterValue === 'number') {
                   if (filterValue === item[filterKey]) {
-                    filtered_return_keys.push(itemReturnKey);
+                    filtered_return_keys.push(itemReturnValue);
                   }
                 } else {
                   logger.warn(`Unknown filter value type: ${filterValue} as ${typeof filterValue}`);
@@ -214,9 +216,9 @@ export class Kondo {
               }
             }
           } else {
-            filtered_return_keys.push(itemReturnKey);
+            filtered_return_keys.push(itemReturnValue);
           }
-        }
+
         }
       }
     }
