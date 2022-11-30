@@ -5,32 +5,15 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/esbuild:esbuild",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "generatePackageJson": true,
-        "main": "packages/github-actions-core-typed-inputs/src/index.ts",
         "outputPath": "dist/packages/github-actions-core-typed-inputs",
-        "outputFileName": "main.js",
+        "main": "packages/github-actions-core-typed-inputs/src/index.ts",
         "tsConfig": "packages/github-actions-core-typed-inputs/tsconfig.lib.json",
-        "project": "packages/github-actions-core-typed-inputs/package.json",
-        "assets": [
-          {
-            "glob": "packages/github-actions-core-typed-inputs/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ],
-        "platform": "node"
-      },
-      "configurations": {
-        "development": {
-          "minify": false
-        },
-        "production": {
-          "minify": true
-        }
+        "assets": ["packages/github-actions-core-typed-inputs/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "publish": {
@@ -55,10 +38,24 @@
         "jestConfig": "packages/github-actions-core-typed-inputs/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "push": true,
+        "noVerify": true,
+        "postTargets": ["github-actions-core-typed-inputs:deploy"],
+        "commitMessageFormat": "release(${projectName}): 🎸 cut release to ${version}"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "buildTarget": "github-actions-core-typed-inputs:build",
+        "access": "public"
+      }
     }
   },
-  "tags": [],
-  "cli": {
-    "packageManager": "yarn"
-  }
+  "tags": []
 }

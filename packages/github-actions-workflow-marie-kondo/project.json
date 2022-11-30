@@ -4,37 +4,27 @@
   "sourceRoot": "packages/github-actions-workflow-marie-kondo/src",
   "projectType": "library",
   "targets": {
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "push": true,
+        "noVerify": true,
+        "postTargets": ["github-actions-workflow-marie-kondo:deploy"],
+        "commitMessageFormat": "release(${projectName}): 🎸 cut release to ${version} [skip ci]"
+      }
+    },
     "build": {
-      "executor": "@nrwl/esbuild:esbuild",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "generatePackageJson": true,
-        "main": "packages/github-actions-workflow-marie-kondo/src/index.ts",
         "outputPath": "dist/packages/github-actions-workflow-marie-kondo",
-        "outputFileName": "main.js",
+        "main": "packages/github-actions-workflow-marie-kondo/src/index.ts",
         "tsConfig": "packages/github-actions-workflow-marie-kondo/tsconfig.lib.json",
-        "project": "packages/github-actions-workflow-marie-kondo/package.json",
-        "assets": [
-          {
-            "glob": "packages/github-actions-workflow-marie-kondo/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ],
-        "platform": "node",
-        "bundle": true,
-        "target": "node16",
-        "metafile": true,
-        "esbuildOptions": {}
-      },
-      "configurations": {
-        "development": {
-          "minify": false
-        },
-        "production": {
-          "minify": true
-        }
+        "assets": ["packages/github-actions-workflow-marie-kondo/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "publish": {
@@ -58,6 +48,13 @@
       "options": {
         "jestConfig": "packages/github-actions-workflow-marie-kondo/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "buildTarget": "github-actions-workflow-marie-kondo:build",
+        "access": "public"
       }
     }
   },

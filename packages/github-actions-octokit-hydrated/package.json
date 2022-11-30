@@ -1,6 +1,6 @@
 {
   "name": "@broadshield/github-actions-octokit-hydrated",
-  "version": "0.0.1",
+  "version": "1.2.1",
   "description": "This adds a hydrated octokit with pagination, retries, and rate throttling",
   "homepage": "https://github.com/Broadshield/actions-toolkit/tree/main/packages/github-actions-octokit-hydrated",
   "type": "commonjs",
@@ -12,30 +12,9 @@
     "Inputs",
     "GitHub Actions"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Broadshield/actions-toolkit.git",
     "directory": "packages/github-actions-octokit-hydrated"
-  },
-  "dependencies": {
-    "@actions/core": "^1.10.0",
-    "@actions/github": "^5.1.1",
-    "@broadshield/github-actions-core-typed-inputs": "*",
-    "@octokit/auth-token": "^3.0.2",
-    "@octokit/core": "^4.1.0",
-    "@octokit/graphql": "^5.0.4",
-    "@octokit/graphql-schema": "^12.30.0",
-    "@octokit/plugin-paginate-rest": "^5.0.1",
-    "@octokit/plugin-rest-endpoint-methods": "^6.7.0",
-    "@octokit/plugin-throttling": "^4.3.2",
-    "@octokit/request": "^6.2.2",
-    "@octokit/rest": "^19.0.5",
-    "@octokit/types": "^8.0.0",
-    "@octokit/webhooks-types": "^6.7.0",
-    "@swc/helpers": "~0.4.11",
-    "tslib": "^2.4.1"
   }
 }

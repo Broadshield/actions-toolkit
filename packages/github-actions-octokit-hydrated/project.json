@@ -5,33 +5,16 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/esbuild:esbuild",
+      "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "generatePackageJson": true,
-        "main": "packages/github-actions-octokit-hydrated/src/index.ts",
         "outputPath": "dist/packages/github-actions-octokit-hydrated",
-        "outputFileName": "main.js",
+        "main": "packages/github-actions-octokit-hydrated/src/index.ts",
         "tsConfig": "packages/github-actions-octokit-hydrated/tsconfig.lib.json",
-        "project": "packages/github-actions-octokit-hydrated/package.json",
-        "assets": [
-          {
-            "glob": "packages/github-actions-octokit-hydrated/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ],
-        "target": "node16",
-        "platform": "node"
-      },
-      "configurations": {
-        "development": {
-          "minify": false
-        },
-        "production": {
-          "minify": true
-        }
+        "assets": ["packages/github-actions-octokit-hydrated/*.md"],
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "publish": {
@@ -55,6 +38,23 @@
       "options": {
         "jestConfig": "packages/github-actions-octokit-hydrated/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "push": true,
+        "noVerify": true,
+        "postTargets": ["github-actions-octokit-hydrated:deploy"],
+        "commitMessageFormat": "release(${projectName}): 🎸 cut release to ${version}"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "buildTarget": "github-actions-octokit-hydrated:build",
+        "access": "public"
       }
     }
   },

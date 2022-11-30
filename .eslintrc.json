@@ -1,8 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "**/*"
-  ],
+  "ignorePatterns": ["**/*"],
   "plugins": [
     "simple-import-sort",
     "import",
@@ -16,12 +14,7 @@
   ],
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx",
-        "*.js",
-        "*.jsx"
-      ],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
@@ -31,9 +24,7 @@
             "depConstraints": [
               {
                 "sourceTag": "*",
-                "onlyDependOnLibsWithTags": [
-                  "*"
-                ]
+                "onlyDependOnLibsWithTags": ["*"]
               }
             ]
           }
@@ -48,10 +39,7 @@
       },
       "settings": {
         "import/parsers": {
-          "@typescript-eslint/parser": [
-            ".ts",
-            ".tsx"
-          ]
+          "@typescript-eslint/parser": [".ts", ".tsx"]
         },
         "import/resolver": {
           "typescript": {
@@ -62,19 +50,12 @@
       }
     },
     {
-      "plugins": [
-        "actions"
-      ],
-      "files": [
-        ".github/workflows/*.{yml,yaml}"
-      ],
+      "plugins": ["actions"],
+      "files": [".github/workflows/*.{yml,yaml}"],
       "processor": "actions/actions"
     },
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
+      "files": ["*.ts", "*.tsx"],
       "extends": [
         "plugin:promise/recommended",
         "plugin:no-use-extend-native/recommended",
@@ -92,15 +73,11 @@
         "plugin:@nrwl/nx/typescript"
       ],
       "parserOptions": {
-        "project":
-          ["packages/*/tsconfig.json", "tools/tsconfig.tools.json"]
+        "project": ["packages/*/tsconfig.json", "tools/tsconfig.tools.json"]
       },
       "settings": {
         "import/parsers": {
-          "@typescript-eslint/parser": [
-            ".ts",
-            ".tsx"
-          ]
+          "@typescript-eslint/parser": [".ts", ".tsx"]
         },
         "import/resolver": {
           "typescript": {
@@ -135,10 +112,7 @@
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "jest-async/expect-return": "error",
-        "operator-linebreak": [
-          "error",
-          "after"
-        ],
+        "operator-linebreak": ["error", "after"],
         "@typescript-eslint/array-type": "error",
         "@typescript-eslint/await-thenable": "error",
         "@typescript-eslint/consistent-type-assertions": "error",
@@ -155,13 +129,8 @@
           }
         ],
         "import/no-unresolved": "error",
-        "@typescript-eslint/func-call-spacing": [
-          "error",
-          "never"
-        ],
-        "@typescript-eslint/lines-between-class-members": [
-          "error"
-        ],
+        "@typescript-eslint/func-call-spacing": ["error", "never"],
+        "@typescript-eslint/lines-between-class-members": ["error"],
         "@typescript-eslint/no-require-imports": "error",
         "@typescript-eslint/no-unnecessary-qualifier": "error",
         "@typescript-eslint/no-unnecessary-type-assertion": "error",
@@ -180,10 +149,7 @@
         "@typescript-eslint/require-array-sort-compare": "error",
         "@typescript-eslint/restrict-plus-operands": "error",
         "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/semi": [
-          "error",
-          "always"
-        ],
+        "@typescript-eslint/semi": ["error", "always"],
 
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/type-annotation-spacing": "error",
@@ -230,7 +196,8 @@
         "@typescript-eslint/no-misused-new": "error",
         "@typescript-eslint/no-namespace": "error",
         "@typescript-eslint/no-non-null-assertion": "warn",
-        "@typescript-eslint/no-unsafe-argument": "off"
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "import/no-extraneous-dependencies": "off"
       },
       "globals": {
         "NodeJS": true
@@ -245,36 +212,22 @@
       }
     },
     {
-      "files": [
-        "*.js",
-        "*.jsx"
-      ],
-      "extends": [
-        "plugin:jest/recommended",
-        "plugin:@nrwl/nx/javascript"
-      ],
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:jest/recommended", "plugin:@nrwl/nx/javascript"],
       "parserOptions": {
         "project": "tools/tsconfig.tools.json"
       },
       "rules": {}
     },
     {
-      "files": [
-        "*.spec.ts",
-        "*.spec.tsx",
-        "*.spec.js",
-        "*.spec.jsx"
-      ],
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
       "settings": {
         "import/parsers": {
-          "@typescript-eslint/parser": [
-            ".ts",
-            ".tsx"
-          ]
+          "@typescript-eslint/parser": [".ts", ".tsx"]
         },
         "import/resolver": {
           "typescript": {
-            "project": "packages/*/tsconfig.json",
+            "project": "packages/*/tsconfig.spec.json",
             "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn"t contain any source code, like `@types/unist`
           }
         }
