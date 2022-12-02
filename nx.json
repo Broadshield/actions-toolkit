@@ -2,7 +2,7 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "broadshield",
   "affected": {
-    "defaultBase": "origin/main"
+    "defaultBase": "main"
   },
   "tasksRunnerOptions": {
     "default": {

@@ -22,6 +22,16 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 * **github-actions-workflow-marie-kondo:** add nx ([1e7dcdc](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/1e7dcdc2eb8f750f8320081b6447216d931ca494))
 * **workflow:** set up auto publishing ([#9](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/issues/9)) ([b72ed3f](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/b72ed3fd8ee01c235c4d6f0654f84beefd4258cb))
 
+## 0.1.0 (2022-12-02)
+
+
+### Features
+
+* **github-actions-octokit-hydrated:** add handling of GH enterprise ([dc914d8](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/dc914d8882e9910e801646a8f739b8f4aaaef641))
+* **github-actions-octokit-hydrated:** switched to yarn version 1 ([8161a0d](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/8161a0dbf40693e96dbfae80277c54ac3006d98d))
+* **github-actions-workflow-marie-kondo:** add nx ([1e7dcdc](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/1e7dcdc2eb8f750f8320081b6447216d931ca494))
+* **workflow:** set up auto publishing ([#9](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/issues/9)) ([b72ed3f](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/b72ed3fd8ee01c235c4d6f0654f84beefd4258cb))
+
 ## [1.2.1](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-octokit-hydrated-1.2.0...github-actions-octokit-hydrated-1.2.1) (2022-11-30)
 
 
