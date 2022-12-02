@@ -26,6 +26,14 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 * **github-actions-octokit-hydrated:** switched to yarn version 1 ([8161a0d](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/8161a0dbf40693e96dbfae80277c54ac3006d98d))
 * **github-actions-workflow-marie-kondo:** add nx ([1e7dcdc](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/1e7dcdc2eb8f750f8320081b6447216d931ca494))
 
+## 0.1.0 (2022-12-02)
+
+
+### Features
+
+* **github-actions-octokit-hydrated:** switched to yarn version 1 ([8161a0d](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/8161a0dbf40693e96dbfae80277c54ac3006d98d))
+* **github-actions-workflow-marie-kondo:** add nx ([1e7dcdc](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/1e7dcdc2eb8f750f8320081b6447216d931ca494))
+
 ## [1.2.2](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-workflow-marie-kondo-1.2.1...github-actions-workflow-marie-kondo-1.2.2) (2022-11-30)
 
 
