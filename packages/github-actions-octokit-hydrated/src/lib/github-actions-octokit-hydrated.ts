@@ -9,6 +9,13 @@ import {
 } from '@broadshield/github-actions-core-typed-inputs';
 import type { OctokitOptions } from '@octokit/core/dist-types/types';
 import { graphql } from '@octokit/graphql';
+import {
+  enterpriseServer32,
+  enterpriseServer33,
+  enterpriseServer34,
+  enterpriseServer35,
+  enterpriseServer36,
+} from '@octokit/plugin-enterprise-server';
 import { restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods';
 import { throttling } from '@octokit/plugin-throttling';
 import type { ThrottlingOptions } from '@octokit/plugin-throttling/dist-types/types';
@@ -57,6 +64,47 @@ export const GITHUB_TOKEN = getGithubToken('github_token', process.env['GITHUB_T
 export const graphqlWithAuth = graphql.defaults({
   headers: { authorization: `token ${GITHUB_TOKEN}` },
 });
+export interface EnterpriseServerVersions {
+  '32': typeof enterpriseServer32;
+  '3.2': typeof enterpriseServer32;
+  '33': typeof enterpriseServer33;
+  '3.3': typeof enterpriseServer33;
+  '34': typeof enterpriseServer34;
+  '3.4': typeof enterpriseServer34;
+  '35': typeof enterpriseServer35;
+  '3.5': typeof enterpriseServer35;
+  '36': typeof enterpriseServer36;
+  '3.6': typeof enterpriseServer36;
+}
+export type EnterpriseVersionNumber = keyof EnterpriseServerVersions;
+export type EnterpriseServerVersion<K extends EnterpriseVersionNumber> = EnterpriseServerVersions[K];
+export function enterpriseServerPlugin<T extends EnterpriseVersionNumber>(version: T): EnterpriseServerVersion<T> {
+  switch (version) {
+    case '3.6':
+    case '36': {
+      return enterpriseServer36;
+    }
+    case '3.5':
+    case '35': {
+      return enterpriseServer35;
+    }
+    case '3.4':
+    case '34': {
+      return enterpriseServer34;
+    }
+    case '3.3':
+    case '33': {
+      return enterpriseServer33;
+    }
+    case '3.2':
+    case '32': {
+      return enterpriseServer32;
+    }
+    default: {
+      throw new Error(`Unsupported Enterprise Server version: ${version}`);
+    }
+  }
+}
 
 type OctokitRequestOptions = {
   method: string;
@@ -96,6 +144,19 @@ export type OctokitType<T> = T extends typeof Octokit
   ? typeof GitHub
   : never;
 export type OctokitInstance = InstanceType<typeof Octokit>;
+export function createEnterpriseOctokit(
+  enterpriseServerVersion: EnterpriseVersionNumber,
+  token?: string | any,
+  options?: OctokitOptions,
+): OctokitInstance {
+  const EntOctokit = Octokit.plugin(enterpriseServerPlugin(enterpriseServerVersion));
+  const mergedOptions = getOctokitOptions(token, { ...oOptions, ...options });
+  if (mergedOptions.auth) core.setSecret(mergedOptions.auth);
+  if (token) core.setSecret(token);
+  if (core.isDebug()) logger.debug(`Creating Octokit instance with options: ${JSON.stringify(mergedOptions)}`);
+
+  return new EntOctokit(mergedOptions);
+}
 export function createOctokit(token?: string | any, options?: OctokitOptions): OctokitInstance {
   const mergedOptions = getOctokitOptions(token, { ...oOptions, ...options });
   if (mergedOptions.auth) core.setSecret(mergedOptions.auth);

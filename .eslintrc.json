@@ -1,17 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": [
-    "simple-import-sort",
-    "import",
-    "jest",
-    "jest-async",
-    "@typescript-eslint",
-    "optimize-regex",
-    "promise",
-    "node",
-    "@nrwl/nx"
-  ],
+  "plugins": ["import", "jest", "jest-async", "@typescript-eslint", "optimize-regex", "promise", "node", "@nrwl/nx"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -43,10 +33,7 @@
         },
         "import/resolver": {
           "typescript": {
-            "project": [
-              "packages/*/tsconfig.json",
-              "tools/tsconfig.tools.json"
-            ],
+            "project": ["packages/*/tsconfig.json", "tools/tsconfig.tools.json"],
             "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn"t contain any source code, like `@types/unist`
           }
         }
@@ -152,10 +139,7 @@
         "@typescript-eslint/require-array-sort-compare": "error",
         "@typescript-eslint/restrict-plus-operands": "error",
         "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/semi": [
-          "error",
-          "always"
-        ],
+        "@typescript-eslint/semi": ["error", "always"],
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/type-annotation-spacing": "error",
         "@typescript-eslint/unbound-method": "error",
@@ -181,8 +165,6 @@
         "no-restricted-syntax": "off",
         "one-var": "off",
         "semi": "off",
-        "simple-import-sort/exports": "off",
-        "simple-import-sort/imports": "error",
         "sort-imports": "off",
         "sonarjs/cognitive-complexity": "off",
         "space-before-function-paren": "off",
@@ -256,7 +238,6 @@
         "import/no-extraneous-dependencies": "off",
         "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/no-unsafe-return": "off",
-        "simple-import-sort/exports": "off",
         "@typescript-eslint/no-unused-vars": [
           "error",
           {

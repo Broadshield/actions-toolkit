@@ -1890,6 +1890,21 @@
   resolved "https://registry.npmjs.org/@octokit/openapi-types/-/openapi-types-14.0.0.tgz#949c5019028c93f189abbc2fb42f333290f7134a"
   integrity sha512-HNWisMYlR8VCnNurDU6os2ikx0s0VyEjDYHNS/h4cgb8DeOxQ0n72HyinUtdDVxJhFy3FWLGl0DJhfEWk3P5Iw==
 
+"@octokit/plugin-enterprise-compatibility@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/@octokit/plugin-enterprise-compatibility/-/plugin-enterprise-compatibility-2.0.3.tgz#816cdf7df824014a54c28ac7efc7759f97101d40"
+  integrity sha512-RWe46TqOFJCJZw0Cqp/CD/vPSSF3bR0u79+KVFJzGOwx7hDvKhlTvyA+am0tGmJxkOvMwPCvi+reS3vewoZSDg==
+  dependencies:
+    "@octokit/request-error" "^3.0.0"
+    "@octokit/types" "^8.0.0"
+
+"@octokit/plugin-enterprise-server@^11.3.0":
+  version "11.3.0"
+  resolved "https://registry.npmjs.org/@octokit/plugin-enterprise-server/-/plugin-enterprise-server-11.3.0.tgz#753baa28d9f97cd2e11f7c53fd3f7cea15fd7436"
+  integrity sha512-Z4v7gnClURNsCgJMvr9IGsx5Ui9YBSK9G0iYZc9HK0sNb9PA5PvQ1p9WggbDn2k/sm0a/sbIT7+ywn+mQOulaw==
+  dependencies:
+    "@octokit/types" "^8.0.0"
+
 "@octokit/plugin-paginate-rest@^2.17.0":
   version "2.21.3"
   resolved "https://registry.npmjs.org/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-2.21.3.tgz#7f12532797775640dbb8224da577da7dc210c87e"
