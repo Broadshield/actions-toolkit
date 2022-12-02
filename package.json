@@ -10,7 +10,7 @@
     "lint": "nx run-many --target lint",
     "test": "nx run-many --target test",
     "build": "nx run-many --target build",
-    "release": "nx affected --verbose --target version --parallel 1",
+    "release": "nx affected --verbose --target version --parallel 1 --origin origin",
     "deploy": "nx affected --verbose --target deploy --parallel 1",
     "prepare": "is-ci || husky install",
     "format": "nx format:write",
