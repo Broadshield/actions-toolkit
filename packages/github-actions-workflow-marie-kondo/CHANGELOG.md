@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.0.2](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-workflow-marie-kondo-0.0.1...github-actions-workflow-marie-kondo-0.0.2) (2022-12-02)
+
+
+### Bug Fixes
+
+* action.yml dogfood ([cffafd9](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/cffafd927503000d61b5d2e30ed2d9b20bc0408d))
+
 ## 0.1.0 (2022-12-02)
 
 
