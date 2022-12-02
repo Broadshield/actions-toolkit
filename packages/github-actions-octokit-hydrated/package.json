@@ -1,6 +1,6 @@
 {
   "name": "@broadshield/github-actions-octokit-hydrated",
-  "version": "0.1.0",
+  "version": "1.3.0",
   "description": "This adds a hydrated octokit with pagination, retries, and rate throttling",
   "homepage": "https://github.com/Broadshield/actions-toolkit/tree/main/packages/github-actions-octokit-hydrated",
   "type": "commonjs",
