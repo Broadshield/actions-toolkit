@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.0](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-octokit-hydrated-1.2.3...github-actions-octokit-hydrated-1.4.0) (2022-12-02)
+
+
+### Bug Fixes
+
+* action.yml dogfood ([cffafd9](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/cffafd927503000d61b5d2e30ed2d9b20bc0408d))
+
+## [1.3.0](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-octokit-hydrated-1.2.2...github-actions-octokit-hydrated-1.3.0) (2022-12-02)
+
+
+### Features
+
+* **github-actions-octokit-hydrated:** add handling of GH enterprise ([31248e5](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/31248e5c346d27c1455f935b2a9fc27c22980a4e))
+* **github-actions-octokit-hydrated:** add handling of GH enterprise ([dc914d8](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/commit/dc914d8882e9910e801646a8f739b8f4aaaef641))
+
 ## [1.3.0](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-octokit-hydrated-1.2.2...github-actions-octokit-hydrated-1.3.0) (2022-12-02)
 
 
