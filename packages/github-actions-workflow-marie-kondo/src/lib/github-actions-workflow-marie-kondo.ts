@@ -1,10 +1,7 @@
-import { GithubOctokitRepo, isDebug, logger } from '@broadshield/github-actions-core-typed-inputs';
-import {
-  createOctokit,
-  KnownKeysMatching,
-  OctokitInstance,
-  PaginatingEndpoints,
-} from '@broadshield/github-actions-octokit-hydrated';
+import { isDebug, logger } from '@broadshield/github-actions-core-typed-inputs';
+import type { GithubOctokitRepo } from '@broadshield/github-actions-core-typed-inputs';
+import type { KnownKeysMatching, OctokitInstance } from '@broadshield/github-actions-octokit-hydrated';
+import { PaginatingEndpoints, createOctokit } from '@broadshield/github-actions-octokit-hydrated';
 
 export function basename(path: string): string {
   if (!path) return '';
