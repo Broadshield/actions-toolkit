@@ -1,5 +1,3 @@
-import { URL } from 'node:url';
-
 import * as core from '@actions/core';
 import { context } from '@actions/github';
 import type { Context } from '@actions/github/lib/context';
@@ -9,6 +7,7 @@ import { createTokenAuth } from '@octokit/auth-token';
 import type { Authentication } from '@octokit/auth-token/dist-types/types';
 import { request } from '@octokit/request';
 import type { OctokitResponse, Route } from '@octokit/types';
+import { URL } from 'node:url';
 
 export * as core from '@actions/core';
 export { context } from '@actions/github';
@@ -129,6 +128,7 @@ export function getTypedInput(
     }
     return undefined;
   }
+
   const inputKey = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`;
   const value = inputKey in process.env ? trimIfRequired(process.env[inputKey], options?.trimWhitespace) : undefined;
 

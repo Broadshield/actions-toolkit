@@ -1,6 +1,6 @@
 {
   "name": "@broadshield/github-actions-core-typed-inputs",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "This adds `getStringInput`, `getBooleanInput`, and `getNumberInput` with default handling to @actions/core",
   "homepage": "https://github.com/Broadshield/actions-toolkit/tree/main/packages/github-actions-core-typed-inputs",
   "type": "commonjs",

@@ -3,12 +3,12 @@ import type { GitHub } from '@broadshield/github-actions-core-typed-inputs';
 import {
   OctokitDefaultOptions,
   core,
-  getGithubToken,
+  // getGithubToken,
   getNumberInput,
   logger,
 } from '@broadshield/github-actions-core-typed-inputs';
 import type { OctokitOptions } from '@octokit/core/dist-types/types';
-import { graphql } from '@octokit/graphql';
+// import { graphql } from '@octokit/graphql';
 import {
   enterpriseServer32,
   enterpriseServer33,
@@ -59,11 +59,11 @@ export type NormalizeResponse<T> = T & {
 };
 export type DataType<T> = 'data' extends keyof T ? T['data'] : unknown;
 export const MAX_RETRIES = getNumberInput('max_retries', 20);
-export const GITHUB_TOKEN = getGithubToken('github_token', process.env['GITHUB_TOKEN']);
+// export const GITHUB_TOKEN = getGithubToken('github_token', process.env['GITHUB_TOKEN']);
 
-export const graphqlWithAuth = graphql.defaults({
-  headers: { authorization: `token ${GITHUB_TOKEN}` },
-});
+// export const graphqlWithAuth = graphql.defaults({
+//   headers: { authorization: `token ${GITHUB_TOKEN}` },
+// });
 export interface EnterpriseServerVersions {
   '32': typeof enterpriseServer32;
   '3.2': typeof enterpriseServer32;
