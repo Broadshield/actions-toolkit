@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.1](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-octokit-hydrated-1.4.0...github-actions-octokit-hydrated-1.4.1) (2022-12-16)
+
 ## [1.4.0](https://github.com-jamie-wearsafe/Broadshield/actions-toolkit/compare/github-actions-octokit-hydrated-1.2.3...github-actions-octokit-hydrated-1.4.0) (2022-12-02)
 
 
